@@ -1,0 +1,130 @@
+@use './colors';
+@use './components' as *;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: grey;
+	color: #ffffff;
+	font-size: 20px;
+}
+
+// NAV
+
+.navbar {
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1;
+	img {
+		width: 150px;
+		height: 60px;
+	}
+
+	.navbar-brand {
+		text-transform: uppercase;
+		font-weight: bold;
+		color: #fff;
+		font-size: 2.4rem;
+		padding: 1rem;
+		transition: color 0.3s;
+
+		&:hover {
+			color: colors.$main-color;
+		}
+	}
+
+	.navbar-nav {
+		.nav-link {
+			text-transform: uppercase;
+			font-weight: bold;
+			color: #fff;
+			font-size: 1.6rem;
+			padding: 1em;
+		}
+
+		.nav-link:hover {
+			color: colors.$main-color;
+		}
+	}
+
+	button {
+		color: #fff;
+		padding: 1.4em;
+		margin: 0 1em;
+		font-size: 1.8rem;
+	}
+}
+// HEADER
+
+header {
+	h1 {
+		font-size: 4.8rem;
+	}
+
+	p {
+		font-size: 2.4rem;
+	}
+
+	.hero-image {
+		position: relative;
+		height: 100vh;
+		top: 0;
+		background-image: url('../img/header-small.jpg');
+		background-position: center;
+		background-size: cover;
+		background-attachment: fixed;
+		z-index: 0;
+
+		&__text {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			color: colors.$main-color;
+			text-transform: uppercase;
+			font-weight: bold;
+			z-index: 5;
+			padding: 10px;
+			text-align: center;
+		}
+
+		&__bg {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(71, 71, 71, 0.8);
+			z-index: -10;
+		}
+	}
+}
+
+// KALKULATOR //
+
+.content
+{
+	width: 100rem;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+	padding-top: 10em;
+}
+
+
+// MEDIA //
+
+@media (min-width: 992px) {
+	header .hero-image {
+		background-image: url('../img/header-big.jpg');
+	}
+}
