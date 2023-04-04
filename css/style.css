@@ -1,0 +1,202 @@
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: grey;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+.navbar img {
+  width: 150px;
+  height: 60px;
+}
+.navbar .navbar-brand {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  font-size: 2.4rem;
+  padding: 1rem;
+  transition: color 0.3s;
+}
+.navbar .navbar-brand:hover {
+  color: rgb(103, 253, 80);
+}
+.navbar .navbar-nav .nav-link {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 1em;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: rgb(103, 253, 80);
+}
+.navbar button {
+  color: #fff;
+  padding: 1.4em;
+  margin: 0 1em;
+  font-size: 1.8rem;
+}
+
+header h1 {
+  font-size: 4.8rem;
+}
+header p {
+  font-size: 2.4rem;
+}
+header .hero-image {
+  position: relative;
+  height: 100vh;
+  top: 0;
+  background-image: url("../img/header-small.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 0;
+}
+header .hero-image__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: rgb(103, 253, 80);
+  text-transform: uppercase;
+  font-weight: bold;
+  z-index: 5;
+  padding: 10px;
+  text-align: center;
+}
+header .hero-image__login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: rgb(103, 253, 80);
+  font-weight: bold;
+  z-index: 5;
+  padding: 10px;
+  text-align: center;
+}
+header .hero-image__login form input {
+  padding: 0.4em;
+  border-radius: 0.5em;
+  border: none;
+}
+header .hero-image__login form .login-btn {
+  position: relative;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+header .hero-image__login form .login-btn:hover {
+  background-color: #cacaca;
+}
+header .hero-image__bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(71, 71, 71, 0.8);
+  z-index: -10;
+}
+
+.calculate {
+  width: 100vw;
+  height: 50em;
+  background-color: rgb(213, 213, 213);
+}
+.calculate p {
+  color: rgb(24, 86, 0);
+  text-align: center;
+  padding-top: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.4rem;
+}
+.calculate .boxes_calc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculate .boxes_calc .box_calc {
+  position: relative;
+  width: 12em;
+  height: 10em;
+  background-color: rgb(103, 253, 80);
+  margin: 2em;
+  border: none;
+  transition: transform 1s;
+}
+.calculate .boxes_calc .box_calc .text-box {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 25%;
+  margin-bottom: 1em;
+}
+.calculate .boxes_calc .box_calc .text-box p {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  color: rgb(103, 253, 80);
+  font-weight: normal;
+}
+.calculate .boxes_calc .box_calc:hover {
+  transform: scale(1.5);
+}
+.calculate .boxes_calc .plytki {
+  background-image: url("/img/floor-g1b1b2b473_640.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.calculate .boxes_calc .panele {
+  background-image: url("/img/wood-gc29d1cf6a_640.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.calculate .boxes_calc .farba {
+  background-image: url("/img/paint-bucket-g94c3387ed_640.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  width: 100rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+  padding-top: 10em;
+}
+
+@media (min-width: 992px) {
+  header .hero-image {
+    background-image: url("../img/header-big.jpg");
+  }
+}/*# sourceMappingURL=style.css.map */
