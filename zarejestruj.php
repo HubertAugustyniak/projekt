@@ -1,14 +1,3 @@
-<?php
-
-	session_start();
-	
-	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
-	{
-		header('Location: decyzja.php');
-		exit();
-	}
-
-?>
 
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -31,7 +20,7 @@
 
 	<nav class="navbar navbar-expand-lg position-fixed top-0 w-100 py-3">
 		<div class="container wrapper">
-			<a class="navbar-brand" href="#">Home</a>
+			<a class="navbar-brand" href="index.php">Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
 				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fas fa-bars"></i>
@@ -39,6 +28,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ms-auto">
+					
 					<a class="nav-link" href="#">Kontakt</a>
 					<a class="nav-link" href="zarejestruj.php">Zarejestruj się</a>
 				</div>
@@ -46,40 +36,66 @@
 		</div>
 	</nav>
 
-	<header>
-		<div class="hero-image">
-			<div class="hero-image__text">
-				<h1>Kalkulator Remontowy</h1>
-				<p><form action="zaloguj.php" method="post">
-	
-		Login: <br /> <input type="text" name="login" /> <br />
-		Hasło: <br /> <input type="password" name="haslo" /> <br /><br />
-		<input type="submit" value="Zaloguj się" />
-	
-	</form>
-	</p>
-			</div>
-			<div class="hero-image__bg"></div>
-		</div>
-	</header>
-
-
 	<div class="content">
-		<p>
-			<?html
+		<center><p>
+		<h1>Rejestracja</h1>
+		
+		<p><form action="zarejestruj.php" method="post">
+	
+	Login: <br /> <input type="text" name="login" /> <br />
+	Hasło: <br /> <input type="password" name="haslo" /> <br />
+	E-mail: <br /> <input type="text" name="email" /> <br /><br /><br />
 
-				echo 'Hello';
-			?>
-		</p>
+	<input type="submit" value="Zarejestruj się" />
 
+</form>
+</p><center>
+		
+<?php
+
+			require_once "connect.php";
+
+	$conn = @new mysqli($host, $db_user, $db_password, $db_name);
+	
+	if ($conn->connect_errno!=0)
+	{
+		echo "Error: ".$conn->connect_errno;
+	}
+	else
+	{
+			ini_set('display_errors', 0);
+			if(isset($_POST['login']) && isset($_POST['haslo']) && isset($_POST['email']) && $_POST['login'] != "" && $_POST['haslo'] != "" && $_POST['email'] != "") {
+				
+				$login = $_POST['login'];
+				$haslo = $_POST['haslo'];
+				$email = $_POST['email'];
+				
+				echo<<<END
+				kokoko
+				<br><br><br>
+				END;
+
+				
+				$sql = "INSERT INTO `uzytkownicy` ('id','user','pass','email') 
+				VALUES ('','$login', '$haslo', '$email')";
+				
+	   
+$resultat_powyzszego = $conn->query($sql);
+}
+
+    $conn->close();
+			
+			}
+
+		?>
+
+			
 
 	</div>
 
 	<div style="height: 100vh;"></div>
 	<div class="footer">Stopka </div>
-<?php
-	if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
-?>
+
 
 </body>
 </html>

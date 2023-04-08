@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Kwi 2023, 12:37
+-- Czas generowania: 07 Kwi 2023, 12:07
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -37,6 +37,14 @@ CREATE TABLE `instalacja` (
   `suma` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Zrzut danych tabeli `instalacja`
+--
+
+INSERT INTO `instalacja` (`uzytkownik_id`, `id_instalacji`, `user`, `pow_podlogi`, `rodzaj_materialu`, `ile_sztuk`, `suma`) VALUES
+(1, 4, 'adam', 30, 'Panele', 33, 825),
+(4, 5, 'andrzej', 40, 'Płytki', 133, 1463);
+
 -- --------------------------------------------------------
 
 --
@@ -61,7 +69,15 @@ CREATE TABLE `malowanie` (
 
 INSERT INTO `malowanie` (`uzytkownik_id`, `id_malowania`, `user`, `pow_pokoju`, `ile_litrow_farby`, `rodzaj_farby`, `kolor_farby`, `cena_za_litr`, `suma`) VALUES
 (1, 1, 'adam', 30, 2.7, 'lateksowa', 'niebieski', 25, 67.5),
-(2, 2, 'anna', 30, 2.7, 'akrylowa', 'bialy', 25, 67.5);
+(2, 2, 'anna', 30, 2.7, 'akrylowa', 'bialy', 25, 67.5),
+(1, 5, 'adam', 35, 7, 'lateksowa', 'niebieski', 12, 100),
+(4, 6, 'andrzej', 20, 5, 'akrylowa', 'zielony', 15, 65),
+(1, 7, 'adam', 20, 5, 'lateksowa', 'zielony', 12, 65),
+(6, 8, 'kasia', 30, 0, '', '', 0, 0),
+(6, 9, 'kasia', 35, 0, '', '', 0, 0),
+(2, 10, 'marek', 35, 2.8, 'akrylowa', 'bialy', 14, 39.2),
+(1, 11, 'adam', 15, 0.45, 'lateksowa', 'szary', 25, 11.25),
+(1, 12, 'adam', 30, 2.7, 'akrylowa', 'bialy', 25, 67.5);
 
 -- --------------------------------------------------------
 
@@ -90,7 +106,8 @@ INSERT INTO `uzytkownicy` (`id`, `user`, `pass`, `email`) VALUES
 (7, 'beata', 'fgthj', 'beata@gmail.com'),
 (8, 'jakub', 'ertyu', 'jakub@gmail.com'),
 (9, 'janusz', 'cvbnm', 'janusz@gmail.com'),
-(10, 'roman', 'dfghj', 'roman@gmail.com');
+(10, 'roman', 'dfghj', 'roman@gmail.com'),
+(13, 'hubert', 'huh', 'hubert2498@gmail.com');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -126,19 +143,19 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `instalacja`
 --
 ALTER TABLE `instalacja`
-  MODIFY `id_instalacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_instalacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `malowanie`
 --
 ALTER TABLE `malowanie`
-  MODIFY `id_malowania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_malowania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ograniczenia dla zrzutów tabel
