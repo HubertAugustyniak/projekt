@@ -1,5 +1,17 @@
+@use './colors';
 .wrapper {
 	margin: 0 auto;
 	width: 100%;
 	max-width: 1200px;
 }
+
+.decoration {
+	top: -1px;
+	position: absolute;
+	height: 100vh;
+	width: 50px;
+	background-color: colors.$black-color;
+	transform: skew(45deg);
+	opacity: 20%;
+	
+} 

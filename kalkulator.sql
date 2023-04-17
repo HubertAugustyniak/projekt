@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Kwi 2023, 12:07
--- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
+-- Generation Time: Apr 16, 2023 at 10:40 PM
+-- Wersja serwera: 10.4.28-MariaDB
+-- Wersja PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,160 +18,158 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `kalkulator`
+-- Database: `kalkulator`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `instalacja`
+-- Struktura tabeli dla tabeli `instalation`
 --
 
-CREATE TABLE `instalacja` (
-  `uzytkownik_id` int(11) NOT NULL,
-  `id_instalacji` int(11) NOT NULL,
+CREATE TABLE `instalation` (
+  `room_id` int(11) NOT NULL,
+  `id_instalation` int(11) NOT NULL,
   `user` varchar(30) NOT NULL,
-  `pow_podlogi` int(11) NOT NULL,
-  `rodzaj_materialu` varchar(30) NOT NULL,
-  `ile_sztuk` int(11) NOT NULL,
-  `suma` int(11) NOT NULL
+  `surf_floor` int(11) NOT NULL,
+  `material_type` varchar(30) NOT NULL,
+  `pcs` int(11) NOT NULL,
+  `addition` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Zrzut danych tabeli `instalacja`
---
-
-INSERT INTO `instalacja` (`uzytkownik_id`, `id_instalacji`, `user`, `pow_podlogi`, `rodzaj_materialu`, `ile_sztuk`, `suma`) VALUES
-(1, 4, 'adam', 30, 'Panele', 33, 825),
-(4, 5, 'andrzej', 40, 'Płytki', 133, 1463);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `malowanie`
+-- Struktura tabeli dla tabeli `paint`
 --
 
-CREATE TABLE `malowanie` (
-  `uzytkownik_id` int(11) NOT NULL,
-  `id_malowania` int(11) NOT NULL,
+CREATE TABLE `paint` (
+  `room_id` int(11) NOT NULL,
+  `id_paint` int(11) NOT NULL,
   `user` varchar(40) NOT NULL,
-  `pow_pokoju` float NOT NULL,
-  `ile_litrow_farby` float NOT NULL,
-  `rodzaj_farby` varchar(20) NOT NULL,
-  `kolor_farby` varchar(20) NOT NULL,
-  `cena_za_litr` float NOT NULL,
-  `suma` float NOT NULL
+  `surf_room` float NOT NULL,
+  `liters` float NOT NULL,
+  `type_paint` varchar(20) NOT NULL,
+  `color_paint` varchar(20) NOT NULL,
+  `price_for_liter` float NOT NULL,
+  `addition` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Zrzut danych tabeli `malowanie`
---
-
-INSERT INTO `malowanie` (`uzytkownik_id`, `id_malowania`, `user`, `pow_pokoju`, `ile_litrow_farby`, `rodzaj_farby`, `kolor_farby`, `cena_za_litr`, `suma`) VALUES
-(1, 1, 'adam', 30, 2.7, 'lateksowa', 'niebieski', 25, 67.5),
-(2, 2, 'anna', 30, 2.7, 'akrylowa', 'bialy', 25, 67.5),
-(1, 5, 'adam', 35, 7, 'lateksowa', 'niebieski', 12, 100),
-(4, 6, 'andrzej', 20, 5, 'akrylowa', 'zielony', 15, 65),
-(1, 7, 'adam', 20, 5, 'lateksowa', 'zielony', 12, 65),
-(6, 8, 'kasia', 30, 0, '', '', 0, 0),
-(6, 9, 'kasia', 35, 0, '', '', 0, 0),
-(2, 10, 'marek', 35, 2.8, 'akrylowa', 'bialy', 14, 39.2),
-(1, 11, 'adam', 15, 0.45, 'lateksowa', 'szary', 25, 11.25),
-(1, 12, 'adam', 30, 2.7, 'akrylowa', 'bialy', 25, 67.5);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `uzytkownicy`
+-- Struktura tabeli dla tabeli `room`
 --
 
-CREATE TABLE `uzytkownicy` (
-  `id` int(11) NOT NULL,
-  `user` text NOT NULL,
-  `pass` text NOT NULL,
-  `email` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+CREATE TABLE `room` (
+  `room_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Zrzut danych tabeli `uzytkownicy`
+-- Struktura tabeli dla tabeli `users`
 --
 
-INSERT INTO `uzytkownicy` (`id`, `user`, `pass`, `email`) VALUES
-(1, 'adam', 'qwerty', 'adam@gmail.com'),
-(2, 'marek', 'asdfg', 'marek@gmail.com'),
-(3, 'anna', 'zxcvb', 'anna@gmail.com'),
-(4, 'andrzej', 'asdfg', 'andrzej@gmail.com'),
-(5, 'justyna', 'yuiop', 'justyna@gmail.com'),
-(6, 'kasia', 'hjkkl', 'kasia@gmail.com'),
-(7, 'beata', 'fgthj', 'beata@gmail.com'),
-(8, 'jakub', 'ertyu', 'jakub@gmail.com'),
-(9, 'janusz', 'cvbnm', 'janusz@gmail.com'),
-(10, 'roman', 'dfghj', 'roman@gmail.com'),
-(13, 'hubert', 'huh', 'hubert2498@gmail.com');
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `passwordhash` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwordhash`) VALUES
+(14, 'jan', 'jan@wp.pl', '36f17c3939ac3e7b2fc9396fa8e953ea');
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
--- Indeksy dla tabeli `instalacja`
+-- Indeksy dla tabeli `instalation`
 --
-ALTER TABLE `instalacja`
-  ADD PRIMARY KEY (`id_instalacji`),
-  ADD KEY `uzytkownik_id` (`uzytkownik_id`);
+ALTER TABLE `instalation`
+  ADD PRIMARY KEY (`id_instalation`),
+  ADD KEY `room_id` (`room_id`);
 
 --
--- Indeksy dla tabeli `malowanie`
+-- Indeksy dla tabeli `paint`
 --
-ALTER TABLE `malowanie`
-  ADD PRIMARY KEY (`id_malowania`),
-  ADD KEY `fk_malowanie_uzytkownicy` (`user`),
-  ADD KEY `uzytkownik_id` (`uzytkownik_id`);
+ALTER TABLE `paint`
+  ADD PRIMARY KEY (`id_paint`),
+  ADD KEY `fk_paint_users` (`user`),
+  ADD KEY `room_id` (`room_id`);
 
 --
--- Indeksy dla tabeli `uzytkownicy`
+-- Indeksy dla tabeli `room`
 --
-ALTER TABLE `uzytkownicy`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`room_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- Indeksy dla tabeli `users`
 --
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT dla tabeli `instalacja`
---
-ALTER TABLE `instalacja`
-  MODIFY `id_instalacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT dla tabeli `malowanie`
---
-ALTER TABLE `malowanie`
-  MODIFY `id_malowania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT dla tabeli `uzytkownicy`
---
-ALTER TABLE `uzytkownicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- Ograniczenia dla zrzutów tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `instalacja`
+-- AUTO_INCREMENT for table `instalation`
 --
-ALTER TABLE `instalacja`
-  ADD CONSTRAINT `instalacja_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`id`);
+ALTER TABLE `instalation`
+  MODIFY `id_instalation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Ograniczenia dla tabeli `malowanie`
+-- AUTO_INCREMENT for table `paint`
 --
-ALTER TABLE `malowanie`
-  ADD CONSTRAINT `malowanie_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`id`);
+ALTER TABLE `paint`
+  MODIFY `id_paint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `instalation`
+--
+ALTER TABLE `instalation`
+  ADD CONSTRAINT `instalation_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`);
+
+--
+-- Constraints for table `paint`
+--
+ALTER TABLE `paint`
+  ADD CONSTRAINT `paint_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`);
+
+--
+-- Constraints for table `room`
+--
+ALTER TABLE `room`
+  ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

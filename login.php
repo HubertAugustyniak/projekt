@@ -1,14 +1,4 @@
-<?php
-
-	session_start();
-	
-	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
-	{
-		header('Location: decyzja.php');
-		exit();
-	}
-
-?>
+<?php include('server.php') ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 
@@ -34,7 +24,6 @@
 			<a class="navbar-brand" href="index.php">Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
 				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -50,14 +39,13 @@
 	<header>
 		<div class="hero-image">
 			<div class="hero-image__login">
-				<h1>Logowanie</h1>
+				<h2>Logowanie</h1>
 				<p>
-				<form action="login.php" method="post">
-
-					<br /> 
-					<input type="text" name="login" placeholder="E-mail lub nazwa" required /> <br /> <br /> 
-					<input type="password" name="password" placeholder="Hasło" required /> <br /><br />
-					<input class="login-btn" type="submit" value="Zaloguj się" />
+				<form class="form" action="login.php" method="post">
+				<?php include('errors.php'); ?>
+					<input type="text" class="login-input" name="username" placeholder="nazwa użytkownika" required /> 
+					<input type="password" class="login-input" name="password" placeholder="Hasło" required /> 
+					<input class="login-btn"  type="submit" name="submit_2" value="Zaloguj się" />
 
 				</form>
 				</p>
@@ -69,11 +57,26 @@
 
 
 	</div>
-	<div class="footer">Stopka </div>
+	<div class="footer">
+		<p class="footer-text">Autorzy: Hubert Augustyniak, Natalia Kosiacka</p>
+	</div
+	
 	<?php
 	if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+		</script>
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="./js/aosscript.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="./js/slicksettings.js"></script>
+	<script src="/js/script.js"></script>
 </body>
 
 </html>

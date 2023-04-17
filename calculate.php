@@ -1,4 +1,16 @@
-<?php include('server.php') ?>
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "Musisz się zalogować";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: login.php");
+  }
+?>
 <!DOCTYPE HTML>
 <html lang="pl">
 
@@ -21,46 +33,66 @@
 
 	<nav class="navbar navbar-expand-lg position-fixed top-0 w-100 py-3">
 		<div class="container wrapper">
-			<a class="navbar-brand" href="index.php">Home</a>
+			<a class="navbar-brand" href="HomeLogin.php">Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
 				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ms-auto">
-					<a class="nav-link" href="index.php">Strona główna</a>
-					<a class="nav-link" href="login.php">Logowanie</a>
-					<a class="nav-link" href="#">Kontakt</a>
+
+					<a class="nav-link" href="HomeLogin.php">Strona główna</a>
+					<a class="nav-link" href="account.php">Moje konto</a>
+					<a class="nav-link" href="renovate.php">Remont</a>
+					<a class="nav-link" href="logout.php">Wyloguj się</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<header class="header">
-		<div class="hero-image">
-			<div class="hero-image__login">
-				<h2>Rejestracja</h2>
-				<p>
-				<form class="form" method="POST" action="register.php">
-					<?php include('errors.php'); ?>
-					<input type="text" class="login-input" name="username" placeholder="Nazwa użytkownika" required>
-					<input type="email" class="login-input" name="email" placeholder="E-mail" required>
-					<input type="password" class="login-input" name="password_1" placeholder="Hasło" required>
-					<input type="password" class="login-input" name="password_2" placeholder="Powtórz hasło"
-						required>
-					<input class="login-btn" type="submit" name="submit" value="Zarejestruj się">
-				</form>
-				</p>
+
+	<div class="mainService">
+		<div class="decoration d1"></div>
+		<div class="decoration d2"></div>
+		<div class="decoration d3"></div>
+
+
+
+		<div class="service">
+
+			<div class="service__text">
+				<h2>Wybierz usługę</h2>
 			</div>
-			<div class="hero-image__bg"></div>
+
+
+			<div class="service__choose">
+				<form class="service__choose-form" method="POST" action="paint.php">
+					<input class="button-form" type="submit" name="malowanie" value="Malowanie ścian"></input>
+				</form>
+
+				<form class="service__choose-form" method="POST" action="tiles.php">
+					<input class="button-form" type="submit" name="instalacja" value="Płytki/Panele"></input>
+				</form>
+			</div>
+			<div class="underline">
+			</div>
 		</div>
-	</header>
+		<?php  if (isset($_SESSION['username'])) : ?>
+		<?php endif ?>
 
 
 	</div>
+
+
+
+
+
+
+
 	<div class="footer">
 		<p class="footer-text">Autorzy: Hubert Augustyniak, Natalia Kosiacka</p>
-	</div
+	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
