@@ -1,0 +1,97 @@
+@use './colors';
+
+@media (min-width: 662px) {
+	header {
+		h1 {
+			font-size: 3.6rem;
+		}
+
+		h2 {
+			font-size: 3.6rem;
+		}
+
+		p {
+			font-size: 1.8rem;
+		}
+
+		.hero-image {
+			background-image: url('../img/header-big.jpg');
+		}
+	}
+
+	.calculate {
+		.first-text {
+			padding-top: 3em;
+			font-size: 2.4rem;
+        }
+
+            .d1 {
+                left: -10%;
+            }
+            .d2 {
+                left: 50%;
+            }
+            .d3 {
+                left: 110%;
+            } 
+		.boxes_calc {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			gap: 50px;
+			.box_calc {
+				.text-box {
+					font-size: 1.8rem;
+				}
+				&:nth-child(even) {
+					grid-column: 1/6;
+				}
+				&:nth-child(odd) {
+					grid-column: 3/8;
+				}
+			}
+		}
+	}
+
+    .mainService {
+    
+         
+    
+        .d1 {
+            left: -10%;
+        }
+        .d2 {
+            left: 40%;
+        }
+        .d3 {
+            left: 100%;
+        }
+        .service {
+            &__text {
+                
+                
+                
+                h2 {
+					font-size: 1.8em;
+		
+				}
+			}
+            &__choose {
+				
+	
+				&-form {
+				
+	
+					.button-form {
+						font-size: 1em;
+					}
+					
+					&:hover:before {
+						left: 200px;
+					}
+					
+				}
+			}
+        }
+    }
+
+}

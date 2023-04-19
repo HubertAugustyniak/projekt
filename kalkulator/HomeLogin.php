@@ -1,3 +1,17 @@
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "Musisz się zalogować";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: login.php");
+  }
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 
@@ -29,8 +43,8 @@
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ms-auto">
 					<a class="nav-link active" aria-current="page" href="renovate.php">Nowy remont</a>
-					<a class="nav-link" href="login.php">Logowanie</a>
-					<a class="nav-link" href="register.php">Rejestracja</a>
+					<a class="nav-link" href="logout.php">Moje konto</a>
+					<a class="nav-link" href="logout.php">Wyloguj się</a>
 					<a class="nav-link" href="#">Kontakt</a>
 				</div>
 			</div>
