@@ -22,8 +22,8 @@
 				
 				//$sql = "INSERT INTO `malowanie` ('uzytkownik_id`,'id_malowania`, `user`, `pow_pokoju`, `ile_litrow_farby`, `rodzaj_farby`, `kolor_farby`, `cena_za_litr`, `suma`) 
 				//VALUES ('', '$_SESSION[user]', '$pokoj', '$ile_litrow', '$typ', '$kolor', '$cena', '$oblicz_koszt')";
-				$sql = "INSERT INTO room (user_id, user, renoName, dateReno)
-   				 SELECT user_id, '$_SESSION[username]', '$reno','$dateReno' FROM users WHERE username = '$_SESSION[username]'";
+				$sql = "INSERT INTO room (user_id, user, renoName, dateReno, isActive)
+   				 SELECT user_id, '$_SESSION[username]', '$reno','$dateReno', 1 FROM users WHERE username = '$_SESSION[username]'";
 	   
 $result_inst = $db->query($sql);
 
@@ -34,6 +34,7 @@ $result = $db->query($question);
 				
 
     }
+
     $db->close();
 }
 

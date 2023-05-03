@@ -60,7 +60,7 @@
 		<div class="decoration d3"></div>
 
 
-
+		<div class="wrapper">
 		<div class="service">
 
 			<div class="service__text">
@@ -80,7 +80,6 @@
 			<div class="underline">
 			</div>
 		</div>
-
 		<div class="open-calc">
 			<?php
 			 include("paint.php"); include("instalation.php");
@@ -89,39 +88,39 @@
 			 switch ($calc) {
 				case 1: 
 				  ?>
-			<div class="paint">
-				<p>
-				<h3>Malowanie ścian</h3>
-				<form action="calculate.php" method="POST">
-					<label for="age">Podaj powierzchnie pokoju w metrach kwadratowych:</label>
-					<input type="number" id="age" step="0.1" name="room" min="0" max="120">
+			<div class="open-calc__box">
+				
+				<h3>Malowanie</h3>
+				<form class="form_calc" action="calculate.php" method="POST">
+					<label class="label-calc" for="age">Podaj powierzchnie pokoju w metrach kwadratowych:</label>
+					<input class="input-calc" type="number" id="age" step="0.1" name="room" min="0" max="120">
 
-					<label for="height">Podaj ilość farby na metr kwadratowy:</label>
-					<input type="number" id="height" step="0.01" name="painter" min="0" max="300">
+					<label class="label-calc" for="height">Podaj ilość farby na metr kwadratowy:</label>
+					<input class="input-calc" type="number" id="height" step="0.01" name="painter" min="0" max="300">
 
-					<label for="weight">Podaj cene za litr farby:</label>
-					<input type="number" id="weight" step="0.1" name="price" min="0" max="500">
+					<label class="label-calc" for="weight">Podaj cene za litr farby:</label>
+					<input class="input-calc" type="number" id="weight" step="0.1" name="price" min="0" max="500">
 
-					<label for="type">Wybierz rodzaj farby:</label>
-					<select id="type" name="type">
-						<option value="akrylowa">Akrylowa</option>
-						<option value="lateksowa">Lateksowa</option>
-						<option value="olejna">Olejna</option>
+					<label class="label-calc" for="type">Wybierz rodzaj farby:</label>
+					<select class="select-calc" id="type" name="type">
+						<option class="option-calc" value="akrylowa">Akrylowa</option>
+						<option class="option-calc" value="lateksowa">Lateksowa</option>
+						<option class="option-calc" value="olejna">Olejna</option>
 					</select>
 
-					<label for="color">Wybierz kolor farby:</label>
-					<select id="color" name="color">
-						<option value="bialy">Biały</option>
-						<option value="zielony">Zielony</option>
-						<option value="niebieski">Niebieski</option>
-						<option value="szary">Szary</option>
+					<label class="label-calc" for="color">Wybierz kolor farby:</label>
+					<select class="select-calc" id="color" name="color">
+						<option class="option-calc" value="bialy">Biały</option>
+						<option class="option-calc" value="zielony" >Zielony</option>
+						<option class="option-calc" value="niebieski">Niebieski</option>
+						<option class="option-calc" value="szary">Szary</option>
 					</select>
 
-					<input type="submit" value="Oblicz i zapisz">
+					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
-				</p>
-				<form action="renovate.php" method="POST">
-					<button type="submit" name="paint" value="tiling">Zacznij nowy remont</button>
+				
+				<form class="form_calc" action="renovate.php" method="POST">
+					<button class="submit-calc" type="submit" name="paint" value="tiling">Zacznij nowy remont</button>
 				</form>
 			</div>
 
@@ -130,38 +129,38 @@
 				break;
 				case 2:
 			?>
-			<div class="Instalation">
+			<div class="open-calc__box">
 				<p>
 				<h3>Instalacja</h3>
-				<form action="calculate.php" method="POST">
-					<label for="age">Podaj powierzchnie podlogi w metrach kwadratowych:</label>
-					<input type="number" id="age" step="0.1" name="floor" min="0" max="120">
+				<form class="form_calc" action="calculate.php" method="POST">
+					<label class="label-calc" for="age">Podaj powierzchnie podlogi w metrach kwadratowych:</label>
+					<input class="input-calc" type="number" id="age" step="0.1" name="floor" min="0" max="120">
 
-					<label for="height">Podaj powierzchnię materiału w metrach kwadratowych:</label>
-					<input type="number" id="height" step="0.01" name="surf_material" min="0" max="300">
+					<label class="label-calc" for="height">Podaj powierzchnię materiału w metrach kwadratowych:</label>
+					<input class="input-calc" type="number" id="height" step="0.01" name="surf_material" min="0" max="300">
 
-					<label for="weight">Podaj cene za sztuke:</label>
-					<input type="number" id="weight" step="0.1" name="price" min="0" max="500">
+					<label class="label-calc" for="weight">Podaj cene za sztuke:</label>
+					<input class="input-calc" type="number" id="weight" step="0.1" name="price" min="0" max="500">
 
-					<label for="type">Wybierz rodzaj materialu:</label>
-					<select id="type" name="type">
+					<label class="label-calc" for="type">Wybierz rodzaj materialu:</label>
+					<select class="select-calc" id="type" name="type">
 						<option value="Płytki">Płytki</option>
 						<option value="Panele">Panele</option>
 						<option value="Terakota">Terakota</option>
 					</select>
 
-					<input type="submit" value="Oblicz i zapisz">
+					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
 				</p>
-				<form action="renovate.php" method="POST">
-					<button type="submit" name="tiles" value="dede">Zacznij nowy remont</button>
+				<form class="form_calc" action="renovate.php" method="POST">
+					<button class="submit-calc" type="submit" name="tiles" value="dede">Zacznij nowy remont</button>
 				</form>
 				</p>
 			</div>
 			<?php
 				break;
 				default: 
-			?>
+			?> 
 			<div class="default-calculate">
 				<p class="default-calculate__text">Ile wyniesie cię remont?</p>
 			</div>
@@ -169,14 +168,13 @@
 				}
 			?>
 		</div>
+	</div>
 		<?php  if (isset($_SESSION['username'])) : ?>
 		<?php endif ?>
 
 
 
 	</div>
-
-
 
 
 

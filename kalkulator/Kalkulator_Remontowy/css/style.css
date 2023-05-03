@@ -7,7 +7,7 @@
 .decoration {
   top: -1px;
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 50px;
   background-color: rgb(70, 70, 70);
   transform: skew(45deg);
@@ -173,7 +173,7 @@ header .hero-image__bg {
   position: relative;
   width: 100vw;
   padding-bottom: 1em;
-  background-color: #e6dbdb;
+  background-color: #f6eaea;
   overflow: hidden;
   z-index: 0;
 }
@@ -277,9 +277,11 @@ header .hero-image__bg {
 
 .mainService {
   position: relative;
-  background-color: #e6dbdb;
-  height: 100vh;
+  background-color: #f6eaea;
   z-index: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 2em;
 }
 .mainService .d1 {
   left: -40%;
@@ -294,29 +296,42 @@ header .hero-image__bg {
   position: relative;
   margin-top: 7em;
   z-index: 0;
+  margin-left: 0;
 }
 .mainService .service__text {
   margin-bottom: 0.5em;
 }
 .mainService .service__text h2 {
-  font-size: 1.2em;
+  font-size: 2.4rem;
   color: rgb(62, 178, 16);
   text-transform: uppercase;
   text-align: center;
 }
 .mainService .service__text span {
-  font-size: 1.2em;
-  margin-left: 1em;
-  padding: 0.2em;
-  background-color: rgb(112, 255, 126);
-  border-radius: 10px;
-  color: rgb(70, 70, 70);
-  box-shadow: 3px 3px 6px rgb(72, 72, 72);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  color: rgb(62, 178, 16);
+  text-align: center;
+  font-weight: bold;
+  padding: 2em;
+  font-size: 1.8rem;
+}
+.mainService .service__text span::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 180px;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
 .mainService .service .underline {
   position: absolute;
   bottom: 0;
-  width: 100vw;
+  left: -167px;
+  width: 150vw;
   height: 20px;
   background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
   z-index: -1;
@@ -338,7 +353,7 @@ header .hero-image__bg {
   background-color: rgb(112, 255, 126);
   color: rgb(70, 70, 70);
   border: none;
-  font-size: 0.8em;
+  font-size: 1.8rem;
   text-decoration: none;
 }
 .mainService .service__choose-form::before {
@@ -373,11 +388,11 @@ header .hero-image__bg {
   display: flex;
   border-radius: 10px;
   border: none;
-  padding: 0.3em;
+  padding: 0.1em;
   margin: 1em;
 }
 .mainService .service .start-renovation__text .btn-description {
-  padding: 0.3em;
+  padding: 0.2em;
   background-color: #fff;
   border-radius: 10px;
   border: none;
@@ -388,23 +403,83 @@ header .hero-image__bg {
 }
 .mainService .service .start-renovation__text label {
   color: rgb(62, 178, 16);
-  font-size: 1.4em;
+  font-size: 1.8rem;
 }
 .mainService .open-calc {
-  margin-left: 2em;
+  padding: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: rgb(217, 255, 217);
+  box-shadow: 3px 3px 6px rgb(72, 72, 72);
+  border-radius: 5px;
 }
-.mainService .open-calc .content {
-  z-index: 3;
+.mainService .open-calc__box h3 {
+  font-size: 2.8rem;
+  color: rgb(62, 178, 16);
+  text-align: center;
+  margin-bottom: 2em;
+}
+.mainService .open-calc__box .form_calc .input-calc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0 0.5em;
+  border: none;
+  margin-bottom: 1em;
+}
+.mainService .open-calc__box .form_calc .label-calc {
+  color: rgb(62, 178, 16);
+  font-size: 1.8rem;
+}
+.mainService .open-calc__box .form_calc .select-calc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 0.1em 0.5em;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(55, 255, 0, 0.25);
+}
+.mainService .open-calc__box .form_calc .submit-calc {
+  font-size: 1.4rem;
+  padding: 0.2em 0.3em;
+  border-radius: 10px;
+  border: 2px solid #00e704;
+  background-color: rgb(112, 255, 126);
+  color: rgb(70, 70, 70);
+  margin: 0.4em 0;
+  transition: transform 0.2s;
+}
+.mainService .open-calc__box .form_calc .submit-calc:hover {
+  transform: scale(1.1);
+}
+.mainService .open-calc .default-calculate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+}
+.mainService .open-calc .default-calculate__text {
+  color: rgb(62, 178, 16);
+  font-size: 2.4rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .footer {
   margin: 0;
+  bottom: 0;
 }
 .footer .footer-text {
   padding: 0.2em;
   margin: 0;
   text-align: center;
-  background-color: rgb(70, 70, 70);
+  background-color: rgba(70, 70, 70, 0);
   font-size: 1.8rem;
 }
 
@@ -458,13 +533,38 @@ header .hero-image__bg {
     left: 100%;
   }
   .mainService .service__text h2 {
-    font-size: 1.8em;
+    font-size: 3rem;
+  }
+  .mainService .service__text span {
+    font-size: 2.4rem;
   }
   .mainService .service__choose-form .button-form {
-    font-size: 1em;
+    font-size: 2rem;
   }
   .mainService .service__choose-form:hover:before {
     left: 200px;
+  }
+  .mainService .start-renovation__text .description {
+    padding: 0.2em;
+  }
+  .mainService .start-renovation__text .btn-description {
+    padding: 0.2em;
+  }
+  .mainService .start-renovation__text label {
+    font-size: 2.4rem;
+  }
+  .mainService .open-calc__box h3 {
+    font-size: 3.4rem;
+  }
+  .mainService .open-calc__box .form_calc .label-calc {
+    color: rgb(62, 178, 16);
+    font-size: 2rem;
+  }
+  .mainService .open-calc__box .form_calc .submit-calc {
+    font-size: 1.6rem;
+  }
+  .mainService .open-calc .default-calculate__text {
+    font-size: 3rem;
   }
 }
 @media (min-width: 992px) {
@@ -512,8 +612,7 @@ header .hero-image__bg {
   }
   .mainService {
     position: relative;
-    background-color: #e6dbdb;
-    height: 100vh;
+    background-color: #f6eaea;
     overflow: hidden;
   }
   .mainService .d1 {
@@ -526,12 +625,42 @@ header .hero-image__bg {
     left: 80%;
   }
   .mainService .service__text h2 {
-    font-size: 2em;
+    font-size: 3.8rem;
+  }
+  .mainService .service__text span {
+    font-size: 2.4rem;
   }
   .mainService .service__choose-form .button-form {
     font-size: 1.2em;
   }
   .mainService .service__choose-form:hover:before {
     left: 220px;
+  }
+  .mainService .service .start-renovation__text .description {
+    padding: 0.3em;
+  }
+  .mainService .service .start-renovation__text .btn-description {
+    padding: 0.3em;
+  }
+  .mainService .service .start-renovation__text label {
+    font-size: 2.6rem;
+  }
+  .mainService .open-calc__box h3 {
+    font-size: 3.6rem;
+  }
+  .mainService .open-calc__box .form_calc .label-calc {
+    color: rgb(62, 178, 16);
+    font-size: 2.4rem;
+  }
+  .mainService .open-calc__box .form_calc .submit-calc {
+    font-size: 1.8rem;
+  }
+  .mainService .open-calc .default-calculate__text {
+    font-size: 3.6rem;
+  }
+}
+@media (min-width: 1400px) {
+  .mainService .service__choose {
+    margin-left: -150px;
   }
 }/*# sourceMappingURL=style.css.map */

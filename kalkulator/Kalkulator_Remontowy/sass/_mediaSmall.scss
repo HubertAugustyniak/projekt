@@ -1,5 +1,6 @@
 @use './colors';
 
+
 @media (min-width: 662px) {
 	header {
 		h1 {
@@ -71,8 +72,11 @@
                 
                 
                 h2 {
-					font-size: 1.8em;
+					font-size: 3rem;
 		
+				}
+				span {
+					font-size: 2.4rem;
 				}
 			}
             &__choose {
@@ -82,7 +86,7 @@
 				
 	
 					.button-form {
-						font-size: 1em;
+						font-size: 2rem;
 					}
 					
 					&:hover:before {
@@ -90,8 +94,56 @@
 					}
 					
 				}
+				
 			}
         }
+		.start-renovation {
+			&__text {
+				
+				.description {
+					padding: 0.2em;
+				}
+
+				.btn-description {
+					padding: 0.2em;
+			
+				}
+
+				label {
+					
+					font-size: 2.4rem;
+				}
+			}
+		}
+
+		.open-calc {
+			&__box {
+				   
+				h3 {
+					font-size: 3.4rem;
+				}
+				.form_calc {
+					
+					
+				 .label-calc {
+					color: colors.$font-color;
+					font-size: 2rem;
+				 }
+	
+					.submit-calc {
+						font-size: 1.6rem;
+						
+					}
+				}
+			}
+	
+			.default-calculate {
+				&__text {
+					
+					font-size: 3rem;
+				}
+			}
+		}	
     }
 
 }

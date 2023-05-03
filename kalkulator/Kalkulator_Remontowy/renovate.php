@@ -58,7 +58,7 @@
 		<div class="decoration d3"></div>
 
              
-
+         <div class="wrapper">
 		<div class="service">
 			<div class="service__text">
 				<h2>Dodaj remont lub zajrzyj do swoich poprzednich</h2>
@@ -75,8 +75,7 @@
 			<div class="service__text">
 				<span>Twoje remonty</span>
 			</div>
-			<div class="underline">
-			</div>
+		</div>
 		</div>
 		<?php  if (isset($_SESSION['username'])) : ?>
 		<?php endif ?>
