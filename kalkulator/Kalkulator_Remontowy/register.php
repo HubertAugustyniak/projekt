@@ -30,7 +30,6 @@
 				<div class="navbar-nav ms-auto">
 					<a class="nav-link" href="index.php">Strona główna</a>
 					<a class="nav-link" href="login.php">Logowanie</a>
-					<a class="nav-link" href="#">Kontakt</a>
 				</div>
 			</div>
 		</div>

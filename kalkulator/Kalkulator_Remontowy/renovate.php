@@ -9,7 +9,9 @@
   	session_destroy();
   	unset($_SESSION['username']);
   	header("location: login.php");
+
   }
+  include('renoScript.php'); 
 ?>
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -65,11 +67,14 @@
 			</div>
 			
 			<div class="start-renovation">
-				<form class="start-renovation__text" method="POST" action="calculate.php">
+				<p>
+				<form class="start-renovation__text" method="POST" action="renovate.php">
 					<label for="renovation">Podaj nazwę remontu:</label>
+					<?php include('errors.php'); ?>
 					<input class="description" id="renovation" type="text" name="reno"></input>
 					<input class="btn-description" type="submit" name="submit_desc" value="Dodaj" />
 				</form>
+				</p>
 			</div>
 
 			<div class="service__text">

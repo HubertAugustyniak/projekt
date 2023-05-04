@@ -11,7 +11,30 @@
   	header("location: login.php");
   }
   include('renoScript.php'); 
+
+  require_once "connect.php";
   
+  $db = @new mysqli($host, $db_user, $db_password, $db_name);
+  if ($db->connect_errno!=0)
+  {
+      echo "Error: ".$db->connect_errno;
+  }
+  else
+  {
+      $sql = "SELECT renoName FROM room WHERE isActive=1 AND user='$_SESSION[username]'";
+      $result = $db->query($sql);
+
+      if(mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $renoName = $row['renoName'];
+
+      }
+      else {
+        $renoName = "Brak aktywnego remontu";
+      }
+
+      $db->close();
+  }
 ?>
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -45,7 +68,7 @@
 				<div class="navbar-nav ms-auto">
 
 					<a class="nav-link" href="HomeLogin.php">Strona główna</a>
-					<a class="nav-link" href="account.php">Moje konto</a>
+					<a class="nav-link" href="myrenovate.php">Moje remonty</a>
 					<a class="nav-link" href="renovate.php">Nowy remont</a>
 					<a class="nav-link" href="logout.php">Wyloguj się</a>
 				</div>
@@ -64,7 +87,7 @@
 		<div class="service">
 
 			<div class="service__text">
-				<h2>Wybierz usługę</h2>
+				<h2><?php echo  $renoName ?></h2>
 			</div>
 
 
@@ -82,7 +105,6 @@
 		</div>
 		<div class="open-calc">
 			<?php
-			 include("paint.php"); include("instalation.php");
 			 
              $calc = $_GET['calc'];
 			 switch ($calc) {
@@ -119,8 +141,9 @@
 					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
 				
-				<form class="form_calc" action="renovate.php" method="POST">
-					<button class="submit-calc" type="submit" name="paint" value="tiling">Zacznij nowy remont</button>
+				<form class="form_calc" action="calculate.php" method="POST">
+					<button class="submit-calc" type="submit" name="endReno" value="tiling">Zakończ remont</button>
+					<button class="submit-calc" type="submit" name="deleteReno" value="tiling">Usuń remont</button>
 				</form>
 			</div>
 
@@ -130,7 +153,6 @@
 				case 2:
 			?>
 			<div class="open-calc__box">
-				<p>
 				<h3>Instalacja</h3>
 				<form class="form_calc" action="calculate.php" method="POST">
 					<label class="label-calc" for="age">Podaj powierzchnie podlogi w metrach kwadratowych:</label>
@@ -151,11 +173,11 @@
 
 					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
-				</p>
-				<form class="form_calc" action="renovate.php" method="POST">
-					<button class="submit-calc" type="submit" name="tiles" value="dede">Zacznij nowy remont</button>
+				<form class="form_calc" action="calculate.php" method="POST">
+				<button class="submit-calc" type="submit" name="endReno" value="tiling">Zakończ remont</button>
+					<button class="submit-calc" type="submit" name="deleteReno" value="tiling">Usuń remont</button>
 				</form>
-				</p>
+				
 			</div>
 			<?php
 				break;
@@ -165,7 +187,9 @@
 				<p class="default-calculate__text">Ile wyniesie cię remont?</p>
 			</div>
 			<?php	
+			  break;
 				}
+				include("paint.php"); include("instalation.php");
 			?>
 		</div>
 	</div>
