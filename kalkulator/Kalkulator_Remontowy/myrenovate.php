@@ -45,7 +45,7 @@
 				<div class="navbar-nav ms-auto">
 
 					<a class="nav-link" href="HomeLogin.php">Strona główna</a>
-					<a class="nav-link" href="account.php">Moje konto</a>
+					<a class="nav-link" href="renovate.php">Nowy remont</a>
 					<a class="nav-link" href="logout.php">Wyloguj się</a>
 					<a class="nav-link" href="#">Kontakt</a>
 				</div>
@@ -54,24 +54,168 @@
 	</nav>
 
 
-	<div class="mainService">
+	
+	
+	
+
+			<?php
+require_once "connect.php";
+
+$db = @new mysqli($host, $db_user, $db_password, $db_name);
+
+if ($db->connect_errno != 0) {
+  echo "Error: ".$db->connect_errno;
+} else {
+  ini_set('display_errors', 0);
+ 
+  if(isset($_POST['delete_record_inst']) && $_POST['delete_record_inst'] != "") {
+	$id_instalation = $_POST['delete_record_inst'];
+
+	$sql = "DELETE FROM instalation WHERE id_instalation = $id_instalation AND user = '$_SESSION[username]'";
+	$result = $db->query($sql);
+
+	if($result) {
+		header("Location: myrenovate.php");
+	
+	} 
+}
+
+if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") {
+	$id_paint= $_POST['delete_record_paint'];
+
+	$sql = "DELETE FROM paint WHERE id_paint = $id_paint AND user = '$_SESSION[username]'";
+	$result = $db->query($sql);
+
+	if($result) {
+		header("Location: myrenovate.php");
+	
+	} 
+}
+
+  $pytanie_remonty = "SELECT * FROM room WHERE user='$_SESSION[username]'";
+  $result_remonty = $db->query($pytanie_remonty);
+  if ($result_remonty->num_rows > 0) {
+    while ($row_remonty = $result_remonty->fetch_assoc()) {
+      $room_id = $row_remonty["room_id"];
+      ?>
+	  <div class="mainRenovate">
 		<div class="decoration d1"></div>
 		<div class="decoration d2"></div>
 		<div class="decoration d3"></div>
 
              
          <div class="wrapper">
-		<div class="service">
-			<div class="service__text">
-				<span>Twoje remonty</span>
+		<div class="allReno">
+			<div class="allReno__text">
+				<span class="renovateName"><?php echo $row_remonty["renoName"] ?> 
+				<span class="renovateDate"><?php echo $row_remonty["dateReno"] ?></span> </span>
+				
 			</div>
-		</div>
-		</div>
-		<?php  if (isset($_SESSION['username'])) : ?>
-		<?php endif ?>
+      <div class="allReno__show">
+      
+ 
+ <?php
+	  $total_paint_cost = 0;
+	  $total_instalation_cost = 0;
+      $question_paint = "SELECT * FROM paint WHERE room_id='$room_id'";
+      $result_paint = $db->query($question_paint);
+      if ($result_paint->num_rows > 0) {
+             ?>
+
+        <div class="typeReno"><?php echo "Malowanie"; ?></div>
+
+            <?php
+        while ($row_paint = $result_paint->fetch_assoc()) {
+          $total_paint_cost += $row_paint["addition"];
+		  ?>
+		  <div>Potrzebujesz <?php echo $row_paint["liters"] ?> litrów farby rodzaju
+		   <?php echo $row_paint["type_paint"] ?> w kolorze <?php echo $row_paint["color_paint"] ?></div>
+		   <div>Koszt malowania: <?php echo $row_paint["addition"] ?> zł</div>
+           
+
+		
+ <form class ="delete-form" method="POST" action="">
+                    <input type="hidden" name="delete_record_paint" value="<?php echo $row_paint['id_paint']; ?>">
+                    <input class="delete-form_record" type="submit" value="Usuń">
+                </form>
+			<?php
+        }
+          ?>
+		  <div class="fullPartCost">Łączny koszt malowania: <?php echo $total_paint_cost ?> zł</div>
+
+		<?php
+      }
+
+      $question_instalation = "SELECT * FROM instalation WHERE room_id='$room_id'";
+      $result_instalation = $db->query($question_instalation);
+
+      if ($result_instalation->num_rows > 0) {
+		?>
+       <div class="typeReno"><?php echo "Instalacja"; ?></div>
+		<?php
+        while($row_instalation = $result_instalation->fetch_assoc()) {
+            $instalation_cost = $row_instalation['addition'];
+            $total_instalation_cost += $instalation_cost;
+
+            ?>
+             <div>Potrzebujesz <?php echo $row_instalation['pcs'] ?> sztuk materiału rodzaju
+		   <?php echo $row_instalation['material_type'] ?> </div>
+		   <div>Koszt instalacji: <?php echo $instalation_cost ?> zł</div>
+          
+			
+ <form class ="delete-form" method="POST" action="">
+                    <input type="hidden" name="delete_record_inst" value="<?php echo $row_instalation['id_instalation']; ?>">
+                    <input class="delete-form_record" type="submit" value="Usuń">
+                </form>
+			<?php
+        }
+		?>
+		<div class="fullPartCost">Łączny koszt instalacji: <?php echo $total_instalation_cost ?> zł</div>
+		<?php
+    } else {
+		echo "";
+    }
+	?>
+	<div class="fullCost">Łączny koszt: <?php echo $total_instalation_cost + $total_paint_cost ?> zł</div>
+	
+	<form class ="allReno-btn" method="POST">
+	<input type="hidden" name="delete_room" value="<?php echo $room_id; ?>">
+  <button class="result-all__btn" type="submit">Usuń remont</button>
+	</form>
+	<form class ="allReno-btn"method="POST">
+	<input type="hidden" name="edit_room" value="<?php echo $room_id; ?>">
+  <button class="result-all__btn" type="submit">dodaj więcej</button>
+	</form> 
+</div>
+</div>
+</div>
+</div>
+	<?php
+    if (isset($_POST['delete_room'])) {
+        $room_id = $_POST['delete_room'];
+
+        $delete_paint = "DELETE FROM paint WHERE room_id='$room_id'";
+        $delete_instalation = "DELETE FROM instalation WHERE room_id='$room_id'";
+        $db->query($delete_paint);
+        $db->query($delete_instalation);
+    
+        $delete_room = "DELETE FROM room WHERE room_id='$room_id' AND user='$_SESSION[username]'";
+        $db->query($delete_room);
+    
+        header("Location: myrenovate.php");
+    }
+	if (isset($_POST['edit_room'])) {
+		$room_id = $_POST['edit_room'];
+		$db->query("UPDATE room SET isActive=0 WHERE user='{$_SESSION['username']}'");
+		$db->query("UPDATE room SET isActive=1 WHERE room_id=$room_id AND user='{$_SESSION['username']}'");
+		header("Location: calculate.php");
+	  } 
+    } } } ?>
 
 
-	</div>
+<?php  if (isset($_SESSION['username'])) : ?>
+	<?php endif ?>
+	
 
 
 

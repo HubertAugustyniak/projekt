@@ -47,7 +47,12 @@ header("Location: calculate.php");
 				
 	}
     }
-
+	if(isset($_POST['endReno']) != "") {
+		$sql = "UPDATE room SET isActive = 0 WHERE user_id = (SELECT user_id FROM users WHERE username = '$_SESSION[username]') AND isActive = 1";
+		$result = $db->query($sql);
+		header("Location: renovate.php");
+		
+	}
     $db->close();
 }
 

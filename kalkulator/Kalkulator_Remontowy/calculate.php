@@ -141,10 +141,7 @@
 					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
 				
-				<form class="form_calc" action="calculate.php" method="POST">
-					<button class="submit-calc" type="submit" name="endReno" value="tiling">Zakończ remont</button>
-					<button class="submit-calc" type="submit" name="deleteReno" value="tiling">Usuń remont</button>
-				</form>
+			
 			</div>
 
 
@@ -173,10 +170,7 @@
 
 					<input class="submit-calc" type="submit" value="Oblicz i zapisz">
 				</form>
-				<form class="form_calc" action="calculate.php" method="POST">
-				<button class="submit-calc" type="submit" name="endReno" value="tiling">Zakończ remont</button>
-					<button class="submit-calc" type="submit" name="deleteReno" value="tiling">Usuń remont</button>
-				</form>
+				
 				
 			</div>
 			<?php
@@ -191,6 +185,9 @@
 				}
 				include("paint.php"); include("instalation.php");
 			?>
+		<form class="form_calc-btn" action="calculate.php" method="POST">
+				<button class="submit-calc-btn" type="submit" name="endReno" value="tiling">Zakończ remont</button>
+			</form>
 		</div>
 	</div>
 		<?php  if (isset($_SESSION['username'])) : ?>

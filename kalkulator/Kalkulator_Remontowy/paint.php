@@ -11,6 +11,19 @@
 	}
 	else
 	{
+		if(isset($_POST['delete_paint']) && $_POST['delete_paint'] != "") {
+			$id_paint = $_POST['delete_paint'];
+	
+			$sql = "DELETE FROM paint WHERE id_paint = $id_paint AND user = '$_SESSION[username]'";
+			$result = $db->query($sql);
+	
+			if($result) {
+				?>	<div class="delete-success">  <?php echo "Usunięto pomyślnie"; ?> </div> 
+			<?php
+			} else {
+				echo "Wystąpił błąd podczas usuwania rekordu";
+			}
+		}
 			ini_set('display_errors', 0);
 			if(isset($_POST['room']) && isset($_POST['painter']) && isset($_POST['price']) && $_POST['room'] != "" && $_POST['painter'] != "" && $_POST['price'] != "") {
 				
@@ -32,15 +45,32 @@ $color = $_POST['color']; // kolor farby wybrany z listy
 				//VALUES ('', '$_SESSION[user]', '$pokoj', '$ile_litrow', '$typ', '$kolor', '$cena', '$oblicz_koszt')";
 				$sql = "INSERT INTO paint (room_id, user, surf_room, liters, type_paint, color_paint,price_for_liter, addition)
    				 SELECT room_id, '$_SESSION[username]', '$room','$how_liters', '$type', '$color', '$price', '$calc_price'
-       			FROM users, room WHERE username = '$_SESSION[username]'";
+       			FROM users, room WHERE username = '$_SESSION[username]' AND isActive=1";
 	   
 $result_inst = $db->query($sql);
 
-$question = "SELECT * FROM paint WHERE user='$_SESSION[username]'";
+$question = "SELECT * FROM paint WHERE user='$_SESSION[username]' ORDER BY id_paint DESC LIMIT 1";
 $result = $db->query($question);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-    echo "Malowanie nr: " . $row["id_paint"]."<br>". " - Użytkownik: " . $row['user']."<br>". " - Powierzchnia pokoju: " . $row["surf_room"]."m<sup>2</sup>"."<br>"."- Potrzebna losc farby: " . $row["liters"]." litrów"."<br>"."- Rodzaj farby: " . $row["type_paint"]."<br>"."- Kolor: " . $row["color_paint"]."<br>"."- Cena za litr: " . $row["price_for_liter"]." zł". "<br>"."- Koszt malowania: " . $row["addition"]." zł". "<br>";
+	?>
+     <div class="instalation-result">
+		<div class="instalation-result__text" >
+  <p class="box_inst"><span class="box_bold">Powierzchnia pokoju:</span>  <span class="box_info"> <?php echo $row["surf_room"] ?> m<sup>2</sup></span></p>
+  <p class="box_inst"><span class="box_bold">Potrzebna ilość farby:</span>  <span class="box_info"><?php echo $row["liters"] ?> litrów</span></p>
+  <p class="box_inst"><span class="box_bold">Rodzaj farby:</span>  <span class="box_info"><?php echo $row["type_paint"] ?> </span></p>
+  <p class="box_inst"><span class="box_bold">Kolor:</span>  <span class="box_info"><?php echo $row["color_paint"] ?> </span></p>
+  <p class="box_inst"><span class="box_bold">Cena za litr:</span>  <span class="box_info"><?php echo $row["price_for_liter"] ?> zł</span></p>
+  <p class="box_inst"><span class="box_bold">Koszt malowania:</span>  <span class="box_info"><?php echo $row["addition"] ?> zł</span></p>
+  </div>
+	<form class ="instalation-result__form" method="POST" action="">
+                    <input type="hidden" name="delete_paint" value="<?php echo $row['id_paint']; ?>">
+                    <input class="result-inst__btn" type="submit" value="Usuń">
+                </form>
+				<button class = "next-inst__btn"><a href="calculate.php?calc=1" >Kontynuuj</a></button>
+     </div>
+
+	<?php
   }
 } else {
   echo "0 results";

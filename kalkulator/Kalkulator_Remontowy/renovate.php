@@ -45,9 +45,8 @@
 				<div class="navbar-nav ms-auto">
 
 					<a class="nav-link" href="HomeLogin.php">Strona główna</a>
-					<a class="nav-link" href="account.php">Moje konto</a>
+					<a class="nav-link" href="myrenovate.php">Moje remonty</a>
 					<a class="nav-link" href="logout.php">Wyloguj się</a>
-					<a class="nav-link" href="#">Kontakt</a>
 				</div>
 			</div>
 		</div>
@@ -63,7 +62,7 @@
          <div class="wrapper">
 		<div class="service">
 			<div class="service__text">
-				<h2>Dodaj remont lub zajrzyj do swoich poprzednich</h2>
+				<h2>Dodaj remont</h2>
 			</div>
 			
 			<div class="start-renovation">
@@ -76,10 +75,7 @@
 				</form>
 				</p>
 			</div>
-
-			<div class="service__text">
-				<span>Twoje remonty</span>
-			</div>
+          <span class="active_reno">Aktywny remont  <?php include('activeRenovate.php') ?></span>
 		</div>
 		</div>
 		<?php  if (isset($_SESSION['username'])) : ?>
