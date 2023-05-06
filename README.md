@@ -1,0 +1,5 @@
+# projekt
+
+       Jest to webowy kalkulator, który umożliwia użytkownikowi obliczenie kosztów prac remontowych poprzez przeglądarkę internetową zainstalowaną na komputerze lub telefonie.       
+       Możliwości jakie oferuje program to min. malowanie ścian, położenie płytek, i który umożliwia klientowi wybór czyności prac remontowych oraz oblicza koszt tych prac. Informuje o ilości potrzebnych materiałów, a następnie zwraca sumę kosztów wszystkich prac.
+       Do określenia struktury i wyglądu dokumentu w przeglądarce internetowej zastosowane są języki HTML oraz CSS, a także jej biblioteka - Bootstrap. Dla ułatwienia pracy z rozbudowanymi plikami CSS zastosowany jest pre procesor SASS. Projekt korzysta z pakietu XAMPP, składającego się z serwera Apache, bazy danych MySQL. Do zarządzania bazą danych wykorzystywanie jest narzędzie phpmyadmin. Strona prosi użytkownika o wprowadzenia danych poprzez formularz. Za część obliczeniową oraz podejmowanie decyzji na stronie odpowiadają odpowiednio JavaScript i PHP.
