@@ -38,7 +38,7 @@
 		.first-text {
 			padding-top: 3em;
 			font-size: 2.4rem;
-		} 
+		}
 		.d1 {
 			left: 10%;
 		}
@@ -61,8 +61,7 @@
 		position: relative;
 		background-color: colors.$second-color;
 		overflow: hidden;
-		 
-	
+
 		.d1 {
 			left: 10%;
 		}
@@ -75,9 +74,6 @@
 
 		.service {
 			&__text {
-
-				
-	
 				h2 {
 					font-size: 3.8rem;
 				}
@@ -85,24 +81,17 @@
 				span {
 					font-size: 2.4rem;
 				}
-				
-		}
+			}
 			&__choose {
-				
-	
 				&-form {
-				
-	
 					.button-form {
 						font-size: 1.2em;
 					}
-					
+
 					&:hover:before {
 						left: 220px;
 					}
-					
 				}
-				
 			}
 			.start-renovation {
 				&__text {
@@ -111,66 +100,103 @@
 					}
 					.btn-description {
 						padding: 0.3em;
-				
 					}
 					label {
-						
 						font-size: 2.6rem;
 					}
 				}
 			}
-	}
+		}
 
-	.open-calc {
-		&__box {
-               
-			h3 {
-				font-size: 3.6rem;
+		.open-calc {
+			&__box {
+				h3 {
+					font-size: 3.6rem;
+				}
+				.form_calc {
+					.label-calc {
+						color: colors.$font-color;
+						font-size: 2.4rem;
+					}
+
+					.submit-calc {
+						font-size: 1.8rem;
+					}
+				}
 			}
-			.form_calc {
-				
-				
-             .label-calc {
-				color: colors.$font-color;
-				font-size: 2.4rem;
-			 }
 
-				.submit-calc {
+			.default-calculate {
+				&__text {
+					font-size: 3.6rem;
+				}
+			}
+			.form_calc-btn {
+				.submit-calc-btn {
 					font-size: 1.8rem;
-					
 				}
 			}
 		}
+	}
 
-		.default-calculate {
-			&__text {
-				
-				font-size: 3.6rem;
-			}
+	.mainRenovate {
+		.d1 {
+			left: -40%;
 		}
-		.form_calc-btn {
-						
-	   
-			.submit-calc-btn {
-				font-size: 1.8rem;
-				
+		.d2 {
+			left: 50%;
+		}
+		.d3 {
+			left: 140%;
+		}
+		.allReno {
+			&__text {
+				margin-bottom: 0.5em;
+				h2 {
+					font-size: 2.4rem;
+				}
+				.renovateName {
+					font-size: 2.4rem;
+				}
+			}
+
+			&__show {
+				.renoInfo {
+					font-size: 2rem;
+				}
+				.typeReno {
+					font-size: 2rem;
+				}
+				.delete-form {
+					&_record {
+						font-size: 0.8em;
+					}
+				}
+			}
+
+			.fullPartCost {
+				font-size: 1em;
+			}
+
+			.fullCost {
+				font-size: 1.2em;
+				padding-top: 2em;
+			}
+
+			.allReno-btn {
+				.result-all__btn {
+					font-size: 1.8rem;
+				}
 			}
 		}
 	}
 }
-}
-
 
 @media (min-width: 1400px) {
 	.mainService {
-    
-    
-        .service {
-
-            &__choose {
+		.service {
+			&__choose {
 				margin-left: -150px;
-              
 			}
-        }
-    }
+		}
+	}
 }

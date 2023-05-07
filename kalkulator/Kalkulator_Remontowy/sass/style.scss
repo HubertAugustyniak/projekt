@@ -573,6 +573,7 @@ header {
 	z-index: 0;
 	overflow: hidden;
 	padding-bottom: 2em;
+    min-height: 100vh;
 	
 	.d1 {
 		left: -40%;
@@ -583,8 +584,20 @@ header {
 	.d3 {
 		left: 140%;
 	}
+
+	.noneReno
+			{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: colors.$font-color;
+				height: 100vh;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
 	.allReno {
 		padding: 2em;
+		margin-top: 4em;
 		margin-left: 1em;
 		margin-right: 1em;
 		background-color: colors.$back-color;
@@ -593,11 +606,11 @@ header {
 		position: relative;
 		z-index: 0;
 		margin-left: 0;
-
+ 
 		&__text {
 			margin-bottom: 0.5em;
 			h2 {
-				font-size: 2.4rem;
+				font-size: 2rem;
 				color: colors.$font-color;
 				text-transform: uppercase;
 				text-align: center;
@@ -642,18 +655,24 @@ header {
 			color: colors.$font-color;
 			background-color: colors.$back-color;
           
+			.renoInfo {
+               font-size: 1.4rem;
+
+			}
+
 			.typeReno {
 				text-align: center;
 				font-weight: bold;
 				padding-bottom: 1em;
 				padding-top: 1em;
+				font-size: 1.6rem;
 			}
 
 			.delete-form {
 				
 				
 				&_record {
-					font-size: 0.8em;
+					font-size: 1.4rem;
 					color: colors.$red-color;
 					background-color: transparent;
 					border: none;
@@ -670,14 +689,14 @@ header {
 
 		.fullPartCost {
 			font-weight: bold;
-			font-size: 1em;
+			font-size: 1.4rem;
 		}
 
 		.fullCost {
 			text-align: center;
 			font-weight: bold;
 			text-transform: uppercase;
-			font-size: 1.2em;
+			font-size: 2rem;
 			padding-top: 2em;
 		}
 

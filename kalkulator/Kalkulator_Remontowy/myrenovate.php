@@ -54,7 +54,13 @@
 	</nav>
 
 
-	
+	<div class="mainRenovate">
+		<div class="decoration d1"></div>
+		<div class="decoration d2"></div>
+		<div class="decoration d3"></div>
+
+             
+         <div class="wrapper">
 	
 	
 
@@ -91,20 +97,16 @@ if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") 
 	
 	} 
 }
+?>
 
+<?php
   $pytanie_remonty = "SELECT * FROM room WHERE user='$_SESSION[username]'";
   $result_remonty = $db->query($pytanie_remonty);
   if ($result_remonty->num_rows > 0) {
     while ($row_remonty = $result_remonty->fetch_assoc()) {
       $room_id = $row_remonty["room_id"];
       ?>
-	  <div class="mainRenovate">
-		<div class="decoration d1"></div>
-		<div class="decoration d2"></div>
-		<div class="decoration d3"></div>
 
-             
-         <div class="wrapper">
 		<div class="allReno">
 			<div class="allReno__text">
 				<span class="renovateName"><?php echo $row_remonty["renoName"] ?> 
@@ -128,9 +130,9 @@ if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") 
         while ($row_paint = $result_paint->fetch_assoc()) {
           $total_paint_cost += $row_paint["addition"];
 		  ?>
-		  <div>Potrzebujesz <?php echo $row_paint["liters"] ?> litrów farby rodzaju
+		  <div class="renoInfo">Potrzebujesz <?php echo $row_paint["liters"] ?> litrów farby rodzaju
 		   <?php echo $row_paint["type_paint"] ?> w kolorze <?php echo $row_paint["color_paint"] ?></div>
-		   <div>Koszt malowania: <?php echo $row_paint["addition"] ?> zł</div>
+		   <div class="renoInfo">Koszt malowania: <?php echo $row_paint["addition"] ?> zł</div>
            
 
 		
@@ -158,9 +160,9 @@ if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") 
             $total_instalation_cost += $instalation_cost;
 
             ?>
-             <div>Potrzebujesz <?php echo $row_instalation['pcs'] ?> sztuk materiału rodzaju
+             <div class="renoInfo">Potrzebujesz <?php echo $row_instalation['pcs'] ?> sztuk materiału rodzaju
 		   <?php echo $row_instalation['material_type'] ?> </div>
-		   <div>Koszt instalacji: <?php echo $instalation_cost ?> zł</div>
+		   <div class="renoInfo">Koszt instalacji: <?php echo $instalation_cost ?> zł</div>
           
 			
  <form class ="delete-form" method="POST" action="">
@@ -188,8 +190,7 @@ if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") 
 	</form> 
 </div>
 </div>
-</div>
-</div>
+
 	<?php
     if (isset($_POST['delete_room'])) {
         $room_id = $_POST['delete_room'];
@@ -210,8 +211,16 @@ if(isset($_POST['delete_record_paint']) && $_POST['delete_record_paint'] != "") 
 		$db->query("UPDATE room SET isActive=1 WHERE room_id=$room_id AND user='{$_SESSION['username']}'");
 		header("Location: calculate.php");
 	  } 
-    } } } ?>
+    } } 
+	else {
+		?> <div class="noneReno">Brak remontów </div>  <?php
+	}
+	?>
 
+	<?php
+	} ?>
+</div>
+</div>
 
 <?php  if (isset($_SESSION['username'])) : ?>
 	<?php endif ?>

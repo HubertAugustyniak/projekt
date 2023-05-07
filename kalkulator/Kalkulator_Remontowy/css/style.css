@@ -571,6 +571,7 @@ header .hero-image__bg {
   z-index: 0;
   overflow: hidden;
   padding-bottom: 2em;
+  min-height: 100vh;
 }
 .mainRenovate .d1 {
   left: -40%;
@@ -581,8 +582,18 @@ header .hero-image__bg {
 .mainRenovate .d3 {
   left: 140%;
 }
+.mainRenovate .noneReno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(62, 178, 16);
+  height: 100vh;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 .mainRenovate .allReno {
   padding: 2em;
+  margin-top: 4em;
   margin-left: 1em;
   margin-right: 1em;
   background-color: rgb(217, 255, 217);
@@ -596,7 +607,7 @@ header .hero-image__bg {
   margin-bottom: 0.5em;
 }
 .mainRenovate .allReno__text h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: rgb(62, 178, 16);
   text-transform: uppercase;
   text-align: center;
@@ -638,14 +649,18 @@ header .hero-image__bg {
   color: rgb(62, 178, 16);
   background-color: rgb(217, 255, 217);
 }
+.mainRenovate .allReno__show .renoInfo {
+  font-size: 1.4rem;
+}
 .mainRenovate .allReno__show .typeReno {
   text-align: center;
   font-weight: bold;
   padding-bottom: 1em;
   padding-top: 1em;
+  font-size: 1.6rem;
 }
 .mainRenovate .allReno__show .delete-form_record {
-  font-size: 0.8em;
+  font-size: 1.4rem;
   color: rgb(247, 78, 78);
   background-color: transparent;
   border: none;
@@ -657,13 +672,13 @@ header .hero-image__bg {
 }
 .mainRenovate .allReno .fullPartCost {
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.4rem;
 }
 .mainRenovate .allReno .fullCost {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 1.2em;
+  font-size: 2rem;
   padding-top: 2em;
 }
 .mainRenovate .allReno .allReno-btn {
@@ -784,6 +799,46 @@ header .hero-image__bg {
   .mainService .open-calc .form_calc-btn .submit-calc-btn {
     font-size: 1.6rem;
   }
+  .mainRenovate .d1 {
+    left: -40%;
+  }
+  .mainRenovate .d2 {
+    left: 50%;
+  }
+  .mainRenovate .d3 {
+    left: 140%;
+  }
+  .mainRenovate .noneReno {
+    font-size: 3.6rem;
+  }
+  .mainRenovate .allReno__text {
+    margin-bottom: 0.5em;
+  }
+  .mainRenovate .allReno__text h2 {
+    font-size: 2.4rem;
+  }
+  .mainRenovate .allReno__text .renovateName {
+    font-size: 2.4rem;
+  }
+  .mainRenovate .allReno__show .renoInfo {
+    font-size: 1.8rem;
+  }
+  .mainRenovate .allReno__show .typeReno {
+    font-size: 2rem;
+  }
+  .mainRenovate .allReno__show .delete-form_record {
+    font-size: 0.8em;
+  }
+  .mainRenovate .allReno .fullPartCost {
+    font-size: 1em;
+  }
+  .mainRenovate .allReno .fullCost {
+    font-size: 1.2em;
+    padding-top: 2em;
+  }
+  .mainRenovate .allReno .allReno-btn .result-all__btn {
+    font-size: 1.6rem;
+  }
 }
 @media (min-width: 992px) {
   header h1 {
@@ -877,6 +932,43 @@ header .hero-image__bg {
     font-size: 3.6rem;
   }
   .mainService .open-calc .form_calc-btn .submit-calc-btn {
+    font-size: 1.8rem;
+  }
+  .mainRenovate .d1 {
+    left: -40%;
+  }
+  .mainRenovate .d2 {
+    left: 50%;
+  }
+  .mainRenovate .d3 {
+    left: 140%;
+  }
+  .mainRenovate .allReno__text {
+    margin-bottom: 0.5em;
+  }
+  .mainRenovate .allReno__text h2 {
+    font-size: 2.4rem;
+  }
+  .mainRenovate .allReno__text .renovateName {
+    font-size: 2.4rem;
+  }
+  .mainRenovate .allReno__show .renoInfo {
+    font-size: 2rem;
+  }
+  .mainRenovate .allReno__show .typeReno {
+    font-size: 2rem;
+  }
+  .mainRenovate .allReno__show .delete-form_record {
+    font-size: 0.8em;
+  }
+  .mainRenovate .allReno .fullPartCost {
+    font-size: 1em;
+  }
+  .mainRenovate .allReno .fullCost {
+    font-size: 1.2em;
+    padding-top: 2em;
+  }
+  .mainRenovate .allReno .allReno-btn .result-all__btn {
     font-size: 1.8rem;
   }
 }

@@ -154,4 +154,76 @@
 		}	
     }
 
+	.mainRenovate {
+	
+	
+		.d1 {
+			left: -40%;
+		}
+		.d2 {
+			left: 50%;
+		}
+		.d3 {
+			left: 140%;
+		}
+
+		.noneReno
+			{
+				font-size: 3.6rem;
+			}
+		.allReno {
+			
+	
+			&__text {
+				margin-bottom: 0.5em;
+				h2 {
+					font-size: 2.4rem;
+				}
+				.renovateName {
+					
+					font-size: 2.4rem;
+				   
+				}
+			}
+	
+			&__show {
+				
+				.renoInfo {
+					font-size: 1.8rem;
+	 
+				 }
+				.typeReno {
+					font-size: 2rem;
+				}
+				.delete-form {
+					
+					
+					&_record {
+						font-size: 0.8em;
+	
+					}
+	
+	
+				}
+			}
+	
+			.fullPartCost {
+				font-size: 1em;
+			}
+	
+			.fullCost {
+				
+				font-size: 1.2em;
+				padding-top: 2em;
+			}
+	
+			.allReno-btn {
+				
+				.result-all__btn {
+					font-size: 1.6rem;
+				}
+			}
+		}
+	
+	}
 }
